@@ -1,0 +1,476 @@
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+#wrap {
+    width: 100%;
+    margin-top: 60px;
+}
+
+header {
+    padding: 0 10% 0 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 2000;
+    background: black;
+}
+
+.sect_div_img > img {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    height: 60%;
+}
+
+.logo {
+    display: inline-block;
+    float: left;
+    height: 36px;
+}
+
+.logo > img {
+    margin-left: 23px;
+    height: 50px;
+    margin-top: 10px;
+    width: 30px;
+}
+
+header > nav {
+    float: right;
+}
+
+.now-a-pick {
+    box-shadow: 0 -6px rgba(75, 112, 253, 0.3) inset;
+    color: black;
+}
+
+.nav-items {
+    margin-right: 20px;
+}
+
+.nav-items > li {
+    display: inline-block; /* 가로정렬 */
+}
+
+.nav-items > li > a {
+    line-height: 60px; /* for Vertical Centering */
+    padding: 0 30px; /* nav item간 간격 */
+    color: #ccc;
+}
+
+.nav-items > li > a:hover {
+    color: white;
+}
+
+/* navigation icon for Mobile Layout */
+.navicon {
+    cursor: pointer;
+    height: 60px;
+    padding: 28px 15px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+}
+
+/* nav icon의 내부 막대 */
+.navicon-bar {
+    background-color: #333;
+    display: block;
+    position: relative;
+    /* navigation icon animation */
+    transition: background-color .2s ease-out;
+    width: 20px;
+    height: 3px;
+}
+
+.navicon-bar::before,
+.navicon-bar::after {
+    background-color: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    /* navigation icon animation */
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.navicon-bar::before {
+    top: -7px;
+}
+
+.navicon-bar::after {
+    top: 7px;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.navicon {
+    display: none;
+}
+
+/* toggle navigation icon */
+.nav-toggle:checked ~ .navicon > .navicon-bar {
+    background: transparent;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.Login-container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+}
+
+.Login-container > div > p {
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.Login-container > div > p > strong {
+    color: #ccc;
+    font-size: 50px;
+}
+
+.Login-container > div {
+    padding: 2%;
+    width: 30%;
+    margin: 10px auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+}
+.Login-InputForm > div > input ::placeholder{
+    color:#ccc;
+}
+span{
+    color:#ccc;
+}
+.Login-container > div > a > input {
+    margin-top:20px;
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+    height: 7%;
+}
+
+.Login-container > div > input {
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 20px;
+    height: 7%;
+    border: none;
+
+}
+
+.Login-InputForm {
+    margin-top: 20px;
+    margin-bottom: 3px;
+    width: 100%;
+    border-radius: 20px;
+    height: 7%;
+    border: none;
+    padding-left: 10px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #494949;
+
+}
+
+section {
+    padding-top: 1em;
+    background-image: url("../img/Devel.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+.sect_div_title {
+    margin: 6px;
+    text-align: left;
+}
+
+.sect_div_title > p {
+    font-size: 20px;
+
+}
+
+
+@media screen and (max-width: 1440px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 160px;
+    }
+
+    header {
+        height: 70px;
+        text-align: center;
+    }
+
+    section {
+        margin-top: -6.7%;
+        height: 100%;
+    }
+
+    nav {
+        float: none;
+    }
+
+    .Login-container > div {
+        width: 45%;
+    }
+
+    /*.Login-container > div > a > input {*/
+        /*width: 100%;*/
+        /*height: 8%;*/
+    /*}*/
+
+    .Login-InputForm {
+        width: 100%;
+        height: 8%;
+
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .Inside_list {
+        font-size: 12px;
+
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+    }
+
+    section {
+        height: 100%;
+        margin-top: -4em;
+    }
+
+    .Login-container > div > p {
+        font-size: 12px;
+    }
+
+    .Login-container > div > p > strong {
+        font-size: 25px;
+    }
+
+    .Login-container > div {
+        width: 45%;
+    }
+
+    .Login-container > div > a > input {
+        width: 100%;
+        height: 8%;
+    }
+
+    .Login-InputForm {
+        width: 100%;
+        height: 8%;
+    }
+
+}
+
+
+/* 화면 너비 0 ~ 708px */
+@media screen and (max-width: 880px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .Login-container > div > p {
+        font-size: 10px;
+    }
+
+    .Login-container > div > p > strong {
+        font-size: 30px;
+    }
+
+    .Login-container > div {
+        width: 80%;
+    }
+    .Login-container > div > a > input {
+        width: 100%;
+        height: 12%
+    }
+
+
+    .Login-InputForm {
+        width: 100%;
+        height: 12%;
+    }
+
+    header {
+        height: 70px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+    }
+
+    section {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .Login-container > div > p {
+        font-size: 10px;
+    }
+
+    .Login-container > div > p > strong {
+        font-size: 20px;
+    }
+
+    .Login-container > div {
+        width: 80%;
+    }
+
+    .Login-container > div > a > input {
+        width: 100%;
+        margin-bottom: 5px;
+        height: 15%;
+    }
+    .Login-InputForm {
+        width: 100%;
+        margin-bottom: 10px;
+        height: 15%;
+    }
+}
+
+
+
+header {
+    height: 70px;
+    text-align: center;
+}
+
+nav {
+    float: none;
+}
+
+section {
+    height: 100%;
+}
+
+
+/* 화면 너비 0 ~ 480px */
+@media screen and (max-width: 480px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 60px;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    .Login-container > div > p {
+        font-size: 15px;
+    }
+
+    .Login-container > div > p > strong {
+        font-size: 50px;
+    }
+
+    .Login-container > div {
+        width: 100%;
+    }
+
+    .Login-container > div > a > input {
+        width: 100%;
+        height: 10%;
+    }
+
+    .Login-InputForm {
+        width: 100%;
+        height: 10%;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    section {
+        padding-top: 5em;
+        height: 100%;
+        float: none;
+    }
+
+    .nav-toggle:checked ~ .nav-items {
+        margin-top: 44%;
+        display: block;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        margin-left: 24%;
+    }
+
+    .nav-items > li {
+        display: block;
+    }
+
+    .nav-items > li > a {
+        line-height: 50px;
+    }
+}

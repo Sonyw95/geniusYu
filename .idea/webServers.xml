@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="33d60281-251c-4731-9534-08d2bbe19283" name="YuBlog" url="http://101.101.162.97">
+        <fileTransfer host="101.101.162.97" port="3389" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="3389" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

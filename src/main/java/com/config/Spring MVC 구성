@@ -1,0 +1,17 @@
+
+
+
+        <ControllerMvc>                                                              @Controller                @RequestMapping
+      2: Mapping 요청URL과 매칭되는 컨트롤러 검색                                    3. 해당 컨트롤러에 Mapping  --> 컨트롤러에서 매핑찾아 실행
+                                           -                                  -                       <-- 살행된 결과를 리턴
+                                             -                              -
+                                               -                           -
+                                                 -                        - ModelAndView로 변환해서 Dispatcher로 리
+      1: 웹브라우저의 뷰단 요청을 전송   ---------------     .xml > DispatcherServlet턴
+                                                      -                     -
+                                                     -                       -
+                                                    -                         -
+                                                   -                           -
+                                                  -                             -       <configureViewResolvers>
+                                5. 응답 생성을 요청                                     4. 컨트롤러의 실행결과를 보여줄 View단 검색
+                                    <jsp>

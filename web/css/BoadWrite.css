@@ -1,0 +1,533 @@
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.Lologo{
+    margin-bottom: -3.1px;
+    width: 10%;
+}
+
+body {
+    background-color: white;
+}
+.ck-editor__editable {
+    min-height: 400px;
+}
+
+#wrap {
+    width: 100%;
+    margin-top: 60px;
+}
+
+header {
+    padding: 0 10% 0 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 2000;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.button {
+    width: 140px;
+    height: 45px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top: 15px;
+}
+
+.button:hover {
+    background-color: Orange;
+    box-shadow: 0px 15px 20px rgba(252, 186, 3, 0.4);
+    color: #fff;
+    /*transform: translateY(-7px);*/
+}
+.backBtn{
+    float: right;
+    position: relative;
+    top: -3.7em;
+}
+
+.write_title_input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    height: 5%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.BoadInfo{
+    font-size: 40px;
+}
+.BoadType{
+    width: 20%;
+    height: 4%;
+    border: 1px solid orange;
+    border-radius: 20px;
+    padding-left: 20px;
+}
+span{
+    font-size:15px;
+}
+.sect_div_img > img {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    height: 60%;
+}
+
+.logo {
+    display: inline-block;
+    height: 36px;
+    float: left;
+}
+
+.logo > img {
+    margin-left: 23px;
+    height: 50px;
+    width: 30px;
+    margin-top: 12px;
+}
+
+header > nav {
+    float: right;
+}
+
+.Inside_list {
+    list-style: none;
+    font-size: 20px;
+
+}
+
+.Inside_list > li {
+    width: 3em;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.Inside_list > li > a {
+    color: #ccc;
+}
+
+.Inside_list > li.active a {
+    color: black;
+}
+
+.Inside_list > li.active {
+    border-bottom: 2px solid black;
+}
+
+.Inside_list > li > a:hover {
+    color: black;
+}
+
+.now-a-pick {
+    box-shadow: 0 -6px rgba(75, 112, 253, 0.3) inset;
+    color: black;
+}
+
+.Inside_Check {
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+}
+
+.nav-items {
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+.nav-items > li {
+    display: inline-block; /* 가로정렬 */
+}
+
+.nav-items > li > a {
+    line-height: 60px; /* for Vertical Centering */
+    padding: 0 30px; /* nav item간 간격 */
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-items > li > a:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* navigation icon for Mobile Layout */
+.navicon {
+    cursor: pointer;
+    height: 60px;
+    padding: 28px 15px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+}
+
+/* nav icon의 내부 막대 */
+.navicon-bar {
+    background-color: #333;
+    display: block;
+    position: relative;
+    /* navigation icon animation */
+    transition: background-color .2s ease-out;
+    width: 20px;
+    height: 3px;
+}
+
+.navicon-bar::before,
+.navicon-bar::after {
+    background-color: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    /* navigation icon animation */
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.navicon-bar::before {
+    top: -7px;
+}
+
+.navicon-bar::after {
+    top: 7px;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.navicon {
+    display: none;
+}
+
+/* toggle navigation icon */
+.nav-toggle:checked ~ .navicon > .navicon-bar {
+    background: transparent;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.DesFooter {
+    text-align: center;
+    color: #ccc;
+    font-size: 20px;
+}
+
+article {
+    margin-top: -2.6em;
+    position: fixed;
+    padding: 5% 7%;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+
+}
+
+section {
+    overflow: hidden;
+    padding: 10% 5% 5% 7%;
+    width: 100%;
+    background-color: white;
+}
+
+section > a {
+    color: black;
+    padding: 5px 20px;
+    width: 30%;
+    margin: 1%;
+    height: 45%;
+    background-color: white;
+    float: left;
+    border-radius: 5px;
+}
+
+
+.sect_div_title {
+    margin: 6px;
+    text-align: left;
+}
+
+.sect_div_title > p {
+    font-size: 20px;
+
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+}
+
+@media screen and (max-width: 1480px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 70px;
+    }
+
+    article {
+        margin-top: 0;
+    }
+
+    header {
+        height: 80px;
+        text-align: center;
+    }
+
+    section {
+        padding-right: 6em;
+        padding-top: 12em;
+    }
+
+    section > a {
+        width: 100%;
+    }
+
+    section > a {
+        width: 31.3333%;
+    }
+
+    section > a:nth-child(5) {
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 1180px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .Inside_list {
+        font-size: 12px;
+
+    }
+
+    .logo > img {
+        margin-top: 8px;
+    }
+
+    article {
+        height: auto;
+        top: 50px;
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+    }
+
+    section {
+        padding-right: 4em;
+        padding-top: 5em;
+    }
+
+    section > a {
+        width: 48%;
+    }
+
+    section > a:nth-child(5) {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .logo > img {
+        margin-top: 8px;
+    }
+
+    .write_title_input {
+        height: 8%;
+    }
+
+    .Inside_list {
+        font-size: 12px;
+
+    }
+
+    article {
+        height: auto;
+        top: 50px;
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    .nav-items {
+        margin-top: 4px;
+        float: none;
+    }
+
+    section {
+        padding-right: 4em;
+        padding-top: 2em;
+    }
+
+    section > a {
+        margin-bottom: 2em;
+        height: 50%;
+        width: 48%;
+    }
+
+    section > a:nth-child(5) {
+        display: block;
+    }
+}
+
+
+/* 화면 너비 0 ~ 768px */
+@media screen and (max-width: 680px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 120px;
+    }
+
+    .logo > img {
+        margin-top: 4px;
+    }
+
+    article {
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+    }
+
+    section {
+        padding-right: 4em;
+        padding-top: 0;
+    }
+
+    section > a {
+        width: 48%;
+    }
+
+    section > a:nth-child(5) {
+        display: block;
+    }
+}
+
+/* 화면 너비 0 ~ 480px */
+@media screen and (max-width: 480px) {
+    #wrap {
+        /* margin-top = header height */
+        margin-top: 60px;
+    }
+
+    .logo > img {
+        margin-top: 4px;
+    }
+
+    article {
+        top: 60px;
+        height: 70px;
+    }
+
+    .DesFooter {
+        height: 60px;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    section {
+        padding-top: 5em;
+    }
+
+    section > a {
+        height: 50%;
+        margin-bottom: 2em;
+        width: 100%;
+    }
+
+    /*section > div:nth-child(5n) {*/
+    /*display: block;*/
+    /*}*/
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    section {
+        padding: 30% 5% 10% 5%;
+        float: none;
+    }
+
+    .nav-toggle:checked ~ .nav-items {
+        display: block;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        margin-left: 25%;
+        margin-top: 45%;
+    }
+
+    .nav-items > li {
+        display: block;
+    }
+
+    .nav-items > li > a {
+        line-height: 50px;
+    }
+}

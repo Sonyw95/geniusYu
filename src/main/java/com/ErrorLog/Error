@@ -1,0 +1,24 @@
+발생했던 오류들
+
+1. ~~~~~ NoSuchBeanDefinitonException: No qualifying bean of type 'BoadDao' available: expected at least 1 bean ~~~~
+: 해당 오류 Autowired를 썻는데 여기서 해당 @Bean객체를 찾을 수 없을 때 발생했음. 해결 : 없는 Bean을 생성하여 추가했더니 문제 사라짐.
+
+2. ~~~~ No qualifying bean of type ~~~~~~~ single matching bean but found 2
+: 해당 타입의 빈이 한개가 아니라 2개이상 존재 했을때 그 발생했음, 해결 : 불필요한 빈 객체를 지웠더니 문제 깔끔쓰.
+
+3. BadSqlGrammerException : ~~~~~
+: 대부분 쿼리문에서 문제가 발생했음 예를들면 ';' 가 있다던지 어딘가 문절이 이상하다 던 지등의 해결쓰.
+
+4. 404 not found
+: 맵핑오류로 발생 . 이게 인텔리제이 문제인지 모르겠는데 인텔리제이를 껏다 키면 커맨드 +; Facets에 wep-inf가 계속 바뀜  문제가 날때마다 그때 그때 고침.
+
+5. ~~~~~~ '~~Vo' property ~~~~
+: jsp에서 주로 발생하는데, 해당 커맨드 객체의 프로퍼티의 이름이랑 달라서 발생. 근데 웃긴게 대문자로 작성된 프로퍼티는 jsp에서 소문자로 써야 오류가 사라지드라...
+
+6. Current request is not a multipart request
+:지금 골머리를 썩히는 에러다. 정말 답변들이 많다 formTag안에 multipart/form-data를 기입해라  기입 하면 이미지 파일 제외 나머지 데이터들에 대한 에러가 발생함.
+: 계속 해결중
+
+7. @Valid 랑 Errors 랑 떨어저도 오류가 나더라...
+
+8. jsp에 ModelAttribute에 커맨드객체 이름이랑 해당 페이지로 보내주는 컨트롤러에 커맨드 객체가 파라미터로 없으면 에러남. 뭐시기 저시기 '커맨드객체' 없음이라고

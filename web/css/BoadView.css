@@ -1,0 +1,492 @@
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+.commentInfo{
+    font-size: 10px;
+    margin-top: 5px;
+}
+.commentArea{
+    width: 81%;
+    margin-left: 10px;
+    /* margin-right: 10px; */
+    display: inline-block;
+    margin-top: 3px;
+}
+.Comment{
+    background-color: rgba(0,0,0,0.05);
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+.commentList{
+    width: 50.5%;
+    padding: 1.5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    background-color: white;
+    /* height: 4em; */
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+}
+.inputComment{
+    width: 50.5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    padding-top: 1%;
+    height: 4em;
+}
+.inComment{
+    padding: 2%;
+    font-size: 15px;
+    height: 6em;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+}
+.DontComment{
+    height: 3em;
+    width: 50.5%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: ivory;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+    color: #856404;
+    padding: 1%;
+    border-left: 9px solid orange;
+}
+.selectTab{
+    width: 50.5%;
+    margin-top: 10em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+}
+
+.button {
+    width: 140px;
+    height: 45px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top: 15px;
+}
+
+.button:hover {
+    background-color: Orange;
+    box-shadow: 0px 15px 20px rgba(252, 186, 3, 0.4);
+    color: #fff;
+    /*transform: translateY(-7px);*/
+}
+
+#wrap {
+    width: 100%;
+}
+
+article > img {
+    width: 100%;
+    height: 100vh;
+}
+
+.WriteUser {
+    width: 50.5%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+}
+
+header {
+    padding: 0 10% 0 10%;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 2000;
+    box-shadow: 0 20px 12px 0 rgba(0, 0, 0, 0.05);
+    background: rgba(80, 90, 100, 0.8);
+}
+
+.sect_div_img > img {
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.logo {
+    display: inline-block;
+    height: 36px;
+    float: left;
+}
+
+.logo > img {
+    margin-left: 23px;
+    height: 50px;
+    width: 30px;
+    margin-top: 12px;
+}
+
+header > nav {
+    float: right;
+}
+
+.Inside_list {
+    list-style: none;
+    font-size: 20px;
+
+}
+
+.paging {
+    float: right;
+}
+
+.Inside_list > li {
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 0.5em;
+}
+
+.Inside_list > li > a {
+    color: #ccc;
+}
+
+.Inside_list > li.active a {
+    color: black;
+}
+
+.Area {
+    width: 50.5%;
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+}
+
+.title {
+    width: 100%;
+    position: absolute;
+    color: #ccc;
+    font-size: 60px;
+    text-align: center;
+    top: 60%;
+}
+
+.Inside_list > li.active {
+    border-bottom: 2px solid black;
+}
+
+.Inside_list > li > a:hover {
+    color: black;
+}
+
+.now-a-pick {
+    box-shadow: 0 -6px rgba(75, 112, 253, 0.3) inset;
+    color: black;
+}
+
+.Inside_Check {
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #CCC;
+}
+
+.nav-items {
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+.nav-items > li {
+    display: inline-block; /* 가로정렬 */
+}
+
+.nav-items > li > a {
+    line-height: 60px; /* for Vertical Centering */
+    padding: 0 30px; /* nav item간 간격 */
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-items > li > a:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+/* navigation icon for Mobile Layout */
+.navicon {
+    cursor: pointer;
+    height: 60px;
+    padding: 28px 15px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+}
+
+/* nav icon의 내부 막대 */
+.navicon-bar {
+    background-color: #333;
+    display: block;
+    position: relative;
+    /* navigation icon animation */
+    transition: background-color .2s ease-out;
+    width: 20px;
+    height: 3px;
+}
+
+.navicon-bar::before,
+.navicon-bar::after {
+    background-color: #333;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    /* navigation icon animation */
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.navicon-bar::before {
+    top: -7px;
+}
+
+.navicon-bar::after {
+    top: 7px;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.navicon {
+    display: none;
+}
+
+/* toggle navigation icon */
+.nav-toggle:checked ~ .navicon > .navicon-bar {
+    background: transparent;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggle:checked ~ .navicon > .navicon-bar::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.DesFooter {
+    text-align: center;
+    color: #ccc;
+    font-size: 20px;
+}
+
+article {
+    margin-top: -5em;
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background-color: rgba(1, 1, 1, 0.4);
+}
+
+section {
+    overflow: hidden;
+    width: 100%;
+    background-color: white;
+    margin-top: 90vh;
+}
+
+
+.sect_div_title {
+    margin: 6px;
+    text-align: left;
+}
+
+.sect_div_title > p {
+    font-size: 20px;
+
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(80, 90, 100, 0.8);
+    padding-top: 2%;
+}
+
+@media screen and (max-width: 1480px) {
+
+
+    header {
+        height: 80px;
+        text-align: center;
+    }
+
+    section {
+    }
+
+}
+
+@media screen and (max-width: 1180px) {
+    .Inside_list {
+        font-size: 12px;
+
+    }
+
+    .logo > img {
+        margin-top: 8px;
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+    }
+
+    section {
+    }
+
+}
+
+@media screen and (max-width: 880px) {
+    .logo > img {
+        margin-top: 8px;
+    }
+
+    .paging {
+        width: 30%;
+        font-size: 10px;
+    }
+
+    .Inside_list {
+        font-size: 12px;
+
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    .nav-items {
+        margin-top: 4px;
+        float: none;
+    }
+
+    section {
+    }
+
+}
+
+
+/* 화면 너비 0 ~ 768px */
+@media screen and (max-width: 680px) {
+    .logo > img {
+        margin-top: 4px;
+    }
+
+    header {
+        height: 60px;
+        text-align: center;
+    }
+
+    nav {
+        float: none;
+        height: 70%;
+    }
+
+    .paging {
+        padding-bottom: 0;
+    }
+
+
+    section {
+    }
+
+}
+
+/* 화면 너비 0 ~ 480px */
+@media screen and (max-width: 480px) {
+    .logo > img {
+        margin-top: 4px;
+    }
+
+
+    .DesFooter {
+        height: 60px;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    section {
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    .navicon {
+        display: block;
+    }
+
+    section {
+        float: none;
+    }
+
+    .button {
+        width: 20%;
+    }
+
+    .nav-toggle:checked ~ .nav-items {
+        display: block;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+        margin-left: 25%;
+        margin-top: 45%;
+    }
+
+    .nav-items > li {
+        display: block;
+    }
+
+    .nav-items > li > a {
+        line-height: 50px;
+    }
+}
