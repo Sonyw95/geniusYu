@@ -34,7 +34,7 @@
                 <c:if test="${!empty LoginInfo}">
                     <li><a href="#">${LoginInfo.nickname}</a></li>
                     <c:if test="${empty LoginType}">
-                        <li><a href="<c:url value="/Login/KakaoLogout"/> ">로그아웃</a></li>
+                        <li><a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a></li>
                     </c:if>
                     <c:if test="${!empty LoginType}">
                         <li><a href="<c:url value="/Login/logout"/> ">로그아웃</a></li>
@@ -51,7 +51,7 @@
     </section>
     <footer>
         <div class="DesFooter">
-            Copyright 2020 © YoungU..
+            Copyright 2020 © <a href="https://sonyw95.github.io/SonPortFolio/Index">YoungU..</a>
         </div>
     </footer>
 </div>
