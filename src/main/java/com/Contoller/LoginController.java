@@ -81,7 +81,6 @@ public class LoginController {
         KakaoVO kakaoVO=(KakaoVO)session.getAttribute("LoginInfo");
         kakaoDao.KakaoLogOut(kakaoVO);
         session.invalidate();
-
         return "redirect:/main/FirstVisited";
     }
 

@@ -42,6 +42,7 @@ public class UrlolController {
             model.addAttribute("Rank", rankVO);
 
             MatchList = lolService.MatchId(targetVo);
+            model.addAttribute("List", MatchList);
 
 
 

@@ -1,18 +1,12 @@
 package com.Contoller;
 
 import com.Boad.*;
-import com.google.gson.JsonObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.*;
-import java.net.URLEncoder;
 import java.util.List;
 
 @Controller // 스프링 MVC에서 컨테이너로 사용한다는 의
@@ -127,30 +121,22 @@ public class BoadContoller {
 
     @RequestMapping("/boad/EditBoad")
     public String EditBoad(@Valid BoadWriteVo boadWriteVo, Errors errors) throws UnsupportedEncodingException {
-        String title = boadWriteVo.getTitle();
-        String name = boadWriteVo.getNickname();
-        title = URLEncoder.encode(title, "UTF-8");
-        name = URLEncoder.encode(name, "UTF-8");
         if (errors.hasErrors()) {
             return "boad/BoadWrite";
         }
         boadDao.Update(boadWriteVo);
-        return "redirect:/BoadView?title=" + title + "&name=" + name;
+        return "redirect:/BoadView?title=" ;
 
     }
     @RequestMapping("/boad/comment")
     public String commentUpload(@Valid CommentVo commentVo, Errors errors) throws UnsupportedEncodingException {
-        String title =commentVo.getTitle();
-        String name = commentVo.getBoad_host();
-        title = URLEncoder.encode(title, "UTF-8");
-        name = URLEncoder.encode(name, "UTF-8");
 
         if(errors.hasErrors()){
-            return "redirect:/BoadView?title=" + title + "&name=" + name;
+            return "redirect:/BoadView?boad-index=" + commentVo.getBoard_index();
         }
 
         boadDao.comment(commentVo);
-        return "redirect:/BoadView?title="+title +"&name=" + name;
+        return "redirect:/BoadView?boad-index=" + commentVo.getBoard_index();
 
     }
 
