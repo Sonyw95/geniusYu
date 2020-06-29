@@ -50,7 +50,7 @@
                     <input class="Login-InputForm" style="background-color:white; color:black; font-size:20px;" type="submit" value="가입"/>
                 </form:form>
                 <a href="#"
-                   onclick='window.open("https://kauth.kakao.com/oauth/authorize?client_id=a594da28e89a08c2ee147c00b3c0db6c&redirect_uri=http://localhost:8080/KakaoCreate.do&response_type=code","_blank","height=800,width=800, status=yes,toolbar=no,menubar=no,location=no,window.close()");return false'><input
+                   onclick='window.open("https://kauth.kakao.com/oauth/authorize?client_id=a594da28e89a08c2ee147c00b3c0db6c&redirect_uri=http://urlol.kr/Login/kakao&response_type=code","_blank","height=800,width=800, status=yes,toolbar=no,menubar=no,location=no,window.close()");return false'><input
                         class="Login-InputForm" type="image" src="<c:url value="/img/KakaoBTN.png"/> " alt=""></a>
             </div>
         </div>
