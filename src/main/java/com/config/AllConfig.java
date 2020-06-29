@@ -20,6 +20,14 @@ public class AllConfig {
         // DataSourc 객체를 생성합니다.  커넥션풀 공부할 때 xml에 적었던 내용을 이제 javaClass에 써서 적용
         DataSource ds = new DataSource();
 //        ds.setDriverClassName("oracle.jdbc.driver.OracleDriver"); // 맨처음 배웠던게 오라클 디비 이므로 오라클 드라이버 설정.
+        ds.setDriverClassName("org.mariadb.jdbc.Driver"); // jdbc Driver를 설정합니다. 현재 마리아 디비를 사용하고 있으니 마리아 디비로 설정.
+        ds.setUrl("jdbc:mariadb://49.50.174.67:3306/YuBlog?characterEncoding=utf8");
+        // 서버의 마리아 디비의 jdbc url을 설정. charctetSet을 utf-8로 해서 지정함.
+//        ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe"); // 오라클 url
+        ds.setUsername("root");
+        // 서버 디비의 계정
+        ds.setPassword("tiger");
+        // 서버 디비의 패스워드
         ds.setInitialSize(2);
         //중요 커넥션 풀을 초기화 할대 생성할 초기 커넥션 개수를 지정한다 기본값은 10이고 현재는 2로 설정.
         ds.setMaxActive(30);
