@@ -75,15 +75,13 @@ public class LoginController {
         return "Login/KakaoLoginPage";
 
     }
-    @RequestMapping("/Login/KakaoLogout")
-    public void KLogOut(HttpSession session){
+    @RequestMapping("/Logout/KakaLogout")
+    public String KakaoLogout(HttpSession session){
         KakaoDao kakaoDao = new KakaoDao();
         KakaoVO kakaoVO=(KakaoVO)session.getAttribute("LoginInfo");
         kakaoDao.KakaoLogOut(kakaoVO);
         session.invalidate();
-    }
-    @RequestMapping("/Logout/KakaLogout")
-    public String KakaoLogout(){
+
         return "redirect:/main/FirstVisited";
     }
 
