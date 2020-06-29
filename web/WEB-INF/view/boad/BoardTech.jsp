@@ -22,17 +22,22 @@
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
             <label class="navicon" for="nav-toggle"><span class="navicon-bar"></span></label>
             <ul class="nav-items">
+                <%-- 로그인 정보가 없다면 로그인 안하거라서 로그인 nav--%>
                 <c:if test="${empty LoginInfo}">
                     <li><a href="<c:url value="/Login/LoginPage"/> ">로그인</a></li>
                     <li><a href="<c:url value="/join/JoinUs"/> ">회원가입</a></li>
                 </c:if>
+                <%--로   그인정보가 있을 때.--%>
                 <c:if test="${!empty LoginInfo}">
+                    <%-- 로그인된 계정 이름을 표시.--%>
                     <li><a href="#">${LoginInfo.nickname}</a></li>
-                    <c:if test="${empty LoginType}">
-                        <li><a href="<c:url value="/Login/KakaoLogout"/> ">로그아웃</a></li>
+                    <%-- 일반적인 로그인 이라믄--%>
+                    <c:if test="${empty LgoinType}">
+                        <li><a href="<c:url value="/Login/logout"/>">로그아웃</a></li>
                     </c:if>
-                    <c:if test="${!empty LoginType}">
-                        <li><a href="<c:url value="/Login/logout"/> ">로그아웃</a></li>
+                    <%-- 근데 해당 로그인이 카카오 로그인이라면--%>
+                    <c:if test="${!empty LgoinType}">
+                        <li><a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a></li>
                     </c:if>
                 </c:if>
             </ul>
@@ -78,14 +83,15 @@
             </div>
         </c:if>
         <c:forEach items="${list}" var="list">
-            <a href="<c:url value="/boad/BoadView?title=${list.title}&name=${list.nickname}"/> ">
+            <c:set var="title" value="${list.title}"/>
+            <c:set var="name" value="${list.nickname}"/>
+            <a href="<c:url value="/boad/BoadView?boad-index=${list.index}"/> ">
                 <div class="sect_div_img"><img src="<c:url value='/img/logo.png'/>" alt=""></div>
-                <div class="sect_div_title"><p><strong>${list.title}</strong></p></div>
+                <div class="sect_div_title"><p><strong>${title}</strong></p></div>
                 <div class="sect_div_user_img"></div>
-                <div class="sect-div-user">${list.nickname} <br>${list.localDateTime}</div>
+                <div class="sect-div-user">${name} <br>${list.localDateTime}</div>
             </a>
         </c:forEach>
-
     </section>
     <footer>
         <div class="DesFooter">

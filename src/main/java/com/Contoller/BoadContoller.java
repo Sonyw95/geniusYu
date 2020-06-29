@@ -22,7 +22,7 @@ public class BoadContoller {
 
 
     @RequestMapping(value = "/BoadList")
-    //                                      page처리를 위해 파라미터를 받습니다 기본적으로는 맨처음 보여줄 1페이지에 대한 값을 주었습니다. durltj model객체는
+    //page처리를 위해 파라미터를 받습니다 기본적으로는 맨처음 보여줄 1페이지에 대한 값을 주었습니다. durltj model객체는
     // Servlet에서 배운 request.addAttribute() 처럼 결과 값을 뷰단으로 보여주기 위해 사용합니다.
     public String handleList(@RequestParam(name = "page", defaultValue = "1") int nowPage, Model model) {
         int listCnt = boadDao.listCount();
