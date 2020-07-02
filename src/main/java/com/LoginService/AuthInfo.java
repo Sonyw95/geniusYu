@@ -1,11 +1,20 @@
 package com.LoginService;
 
 public class AuthInfo {
-    private String email, nickname;
+    private String email, nickname, oneline;
 
-    public AuthInfo(String email, String nickname) {
+    public AuthInfo(String email, String nickname, String oneline) {
         this.email = email;
+        this.oneline=oneline;
         this.nickname = nickname;
+    }
+
+    public String getOneline() {
+        return oneline;
+    }
+
+    public void setOneline(String oneline) {
+        this.oneline = oneline;
     }
 
     public String getEmail() {

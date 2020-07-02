@@ -12,6 +12,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%--<script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>--%>
+    <%--<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>--%>
     <script src="<c:url value="/ckeditor/ckeditor.js"/> "></script>
     <title>Yu urlol Blog</title>
     <link rel="stylesheet" href="<c:url value='/css/BoadWrite.css' />">
@@ -19,7 +21,7 @@
 <body>
 <div id="wrap">
     <header>
-        <a class="logo" href="<c:url value="/main/FirstVisited"/> "><img
+        <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
@@ -40,7 +42,9 @@
                     </c:if>
                     <%-- 근데 해당 로그인이 카카오 로그인이라면--%>
                     <c:if test="${!empty LgoinType}">
-                        <li><a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a></li>
+                        <li>
+                            <a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a>
+                        </li>
                     </c:if>
                 </c:if>
             </ul>
@@ -77,17 +81,33 @@
             <div class="WriteArea">
                 <form:textarea id="Area_Boad" path="Area_Boad" cssClass="write_area_input"/>
                 <script type="text/javascript">
-                    ClassicEditor
-                        .create(document.querySelector('#Area_Boad'), {
-                            language: 'ko',
-                            ckfinder: {
-                                uploadUrl: '../boad/writeImage' // 내가 지정한 업로드 url (post로 요청감)
-                            }
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-
+                    CKEDITOR.replace("Area_Boad", {
+                        enterMode: CKEDITOR.ENTER_BR,
+                        filebrowserUploadUrl:'../boad/writeImage?command=QuickUpload&type=Images&responseType=json'
+                    });
+                    // ClassicEditor
+                    //     .create(document.querySelector('#Area_Boad'), {
+                    //         headers:{
+                    //             'Content-Type': "multipart/form-data;"
+                    //         },
+                    //         language: 'ko',
+                    //         ckfinder: {
+                    //             uploadUrl: '../boad/writeImage?command=QuickUpload&type=Images&responseType=json' // 내가 지정한 업로드 url (post로 요청감)
+                    //         },
+                    //         options: {
+                    //             resourceType: 'Images'
+                    //         },
+                    //         alignment: {
+                    //             options: ['left', 'center', 'right']
+                    //         }
+                    //     })
+                    //     .then(editor => {
+                    //         console.log('Editor was initialized', editor);
+                    //         myEditor = editor;
+                    //     })
+                    //     .catch(error => {
+                    //         console.error(error);
+                    //     });
                 </script>
             </div>
             <input class="button" type="submit" value="완료">

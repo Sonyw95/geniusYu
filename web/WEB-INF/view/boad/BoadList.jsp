@@ -10,13 +10,21 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="개발자 손영욱의 일기장 입니다.">
     <title>Yu urlol Blog</title>
+    <script>
+        if (self.name != 'reload') {
+            self.name = 'reload';
+            self.location.reload(true);
+        }
+        else self.name = '';
+    </script>
     <link rel="stylesheet" href="<c:url value='/css/BoadList.css' />">
 </head>
 <body>
 <div id="wrap">
     <header>
-        <a class="logo" href="<c:url value="/main/FirstVisited"/> "><img
+        <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
             <%-- 로그인에 관련된 상단--%>
@@ -30,14 +38,15 @@
                 </c:if>
                 <%--로   그인정보가 있을 때.--%>
                 <c:if test="${!empty LoginInfo}">
-                    <%-- 로그인된 계정 이름을 표시.--%>
-                    <li><a href="#">${LoginInfo.nickname}</a></li>
                     <%-- 일반적인 로그인 이라믄--%>
                     <c:if test="${empty LgoinType}">
+                        <%-- 로그인된 계정 이름을 표시.--%>
+                        <li><a href="<c:url value="/editInfo"/> ">${LoginInfo.nickname}</a></li>
                         <li><a href="<c:url value="/Login/logout"/>">로그아웃</a></li>
                     </c:if>
                     <%-- 근데 해당 로그인이 카카오 로그인이라면--%>
                     <c:if test="${!empty LgoinType}">
+                        <li><a href="<c:url value="/editInfo"/> ">${LoginInfo.nickname}</a></li>
                         <li><a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a></li>
                     </c:if>
                 </c:if>

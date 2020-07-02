@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 @Configuration
@@ -29,16 +32,31 @@ public class ControllerConfig {
     private AuthLoginService authLoginService;
 
     @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipart = new CommonsMultipartResolver();
+        multipart.setMaxUploadSize(3 * 1024 * 1024);
+        return multipart;
+    }
+
+//    @Bean
+//    public MultipartFilter multipartFilter() {
+//        MultipartFilter multipartFilter = new MultipartFilter();
+//        multipartFilter.setMultipartResolverBeanName("multipartReso‌​lver");
+//        return multipartFilter;
+//    }
+
+    @Bean
     // 기능실현을 위해 매칭 시켜주는 빈 객체 해당 컨트롤러는 회원가입에 대한 컨트롤러 입니다.
-    public JoinController joinController(){
+    public JoinController joinController() {
         JoinController joinController = new JoinController();
         // 회원 가입에 관한 쿼리를 처리하는 빈을 주입합니다.
         joinController.setMemberReg(memberReg);
         return joinController;
     }
+
     @Bean
     // 리그오브 레전드 api를 이용하여 검색기능을 활용하는 컨트롤러로 매칭 시켜 줍니다.
-    public UrlolController urlolController(){
+    public UrlolController urlolController() {
         return new UrlolController();
     }
 
@@ -50,6 +68,7 @@ public class ControllerConfig {
         loginController.setAuthLoginService(authLoginService);
         return loginController;
     }
+
     @Bean
     // 게시판 저장 삭제 수정 등 여러관리 하는 컨트롤러 입니다.
     public BoadContoller boadContoller() {

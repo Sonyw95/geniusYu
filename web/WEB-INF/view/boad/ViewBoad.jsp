@@ -18,7 +18,7 @@
 <body>
 <div id="wrap">
     <header>
-        <a class="logo" href="<c:url value="/main/FirstVisited"/> "><img
+        <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
@@ -35,6 +35,7 @@
                     <li><a href="#">${LoginInfo.nickname}</a></li>
                     <%-- 일반적인 로그인 이라믄--%>
                     <c:if test="${empty LgoinType}">
+                        <c:set var="oneline" value="${LoginInfo.oneline}"/>
                         <li><a href="<c:url value="/Login/logout"/>">로그아웃</a></li>
                     </c:if>
                     <%-- 근데 해당 로그인이 카카오 로그인이라면--%>

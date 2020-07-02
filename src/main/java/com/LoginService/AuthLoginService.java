@@ -1,14 +1,37 @@
 package com.LoginService;
 
+import com.AllException.DuplicateEmailException;
 import com.AllException.WrongMemberException;
 import com.Member.DaoMember;
+import com.Member.EditReq;
 import com.Member.MemberVo;
+
+import java.util.List;
+
 // 로그인 할때 검증하는 클래스 입니다.
 public class AuthLoginService {
     private DaoMember daoMember;
 
     public void setDaoMember(DaoMember daoMember) {
         this.daoMember = daoMember;
+    }
+
+    public AuthInfo memberTableEditService(EditReq editReq){
+        MemberVo memberVo = daoMember.SearchByNickname(editReq.getNickname());
+
+        if(!memberVo.matchLoginPassword(editReq.getPassword())){
+            throw new WrongMemberException();
+        }
+
+        daoMember.memberUpdate(editReq.getOneline(), editReq.getNickname());
+        memberVo = daoMember.SearchByNickname(editReq.getNickname());
+
+        return new AuthInfo(memberVo.getEmail(), memberVo.getNickname(), memberVo.getOneline());
+
+    }
+
+    public void leaveMember(String email){
+        daoMember.leaveMember(email);
     }
 
     public AuthInfo authInfoService(String email, String password){
@@ -23,8 +46,9 @@ public class AuthLoginService {
         if(!memberVo.matchLoginPassword(password)){
             throw new WrongMemberException();
         }
+
         // 이상이 없으면 객체에 저장하여 리턴 합니다.
-        return new AuthInfo(memberVo.getEmail(), memberVo.getNickname());
+        return new AuthInfo(memberVo.getEmail(), memberVo.getNickname(), memberVo.getOneline());
 
     }
 }

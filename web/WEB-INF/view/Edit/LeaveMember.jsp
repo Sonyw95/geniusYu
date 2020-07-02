@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -11,8 +10,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="개발자 손영욱의 일기장 입니다.">
     <title>Yu urlol Blog</title>
-    <link rel="stylesheet" href="<c:url value='/css/Urlol.css' />">
+    <link rel="stylesheet" href="<c:url value='/css/EditPage.css' />">
 </head>
 <body>
 <div id="wrap">
@@ -20,6 +20,7 @@
         <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
+            <%-- 로그인에 관련된 상단--%>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
             <label class="navicon" for="nav-toggle"><span class="navicon-bar"></span></label>
             <ul class="nav-items">
@@ -30,34 +31,61 @@
                 </c:if>
                 <%--로   그인정보가 있을 때.--%>
                 <c:if test="${!empty LoginInfo}">
-                    <%-- 로그인된 계정 이름을 표시.--%>
-                    <li><a href="#">${LoginInfo.nickname}</a></li>
                     <%-- 일반적인 로그인 이라믄--%>
                     <c:if test="${empty LgoinType}">
+                        <%-- 로그인된 계정 이름을 표시.--%>
+                        <li><a href="<c:url value="/editInfo"/> ">${LoginInfo.nickname}</a></li>
                         <li><a href="<c:url value="/Login/logout"/>">로그아웃</a></li>
                     </c:if>
                     <%-- 근데 해당 로그인이 카카오 로그인이라면--%>
                     <c:if test="${!empty LgoinType}">
-                        <li><a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a></li>
+                        <li>
+                            <a href="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout">로그아웃</a>
+                        </li>
                     </c:if>
                 </c:if>
             </ul>
         </nav>
     </header>
+
+    <%--Nav 바로 밑 게시판 탭에 관련된 아티클--%>
     <article>
         <nav class="Inside_Check">
-            <ul class="Inside_list">
-                <li ><a href="<c:url value="/boad/list"/>">전체</a></li>
-                <li><a href="<c:url value="/boad/BoadTech"/> ">테크</a></li>
-                <li style="text-align: inherit; width: 2.6%;" class="active"><a href="<c:url value="/Urlol/UrlolForm"/> "><img class="Lologo" src="<c:url value="/img/Lologo.png"/> " alt=""></a></li>
-            </ul>
+            <c:if test="${empty LgoinType}">
+                <ul class="Inside_list">
+                    <li><a href="<c:url value="/Edit/EditForm"/> ">정보변경</a></li>
+                    <li class="active"><a href="<c:url value="/Edit/LeaveMember"/> ">회원탈퇴</a></li>
+                </ul>
+            </c:if>
+
+            <c:if test="${!empty LgoinType}">
+                <li class="active"><a href="<c:url value="/Edit/LeaveMember"/> ">회원탈퇴</a></li>
+            </c:if>
+
+
         </nav>
     </article>
     <section>
-        <form:form action="../Urlol/MatchHistory" modelAttribute="targetReq">
-            <form:input cssClass="urForm" path="name" placeholder="소환사 이름을 입력해주세요, 검색은 시간이 걸립니다!"/>
-            <form:errors path="name"/>
-        </form:form>
+
+        <div class="sect_container">
+            <h1>블로그를 떠나시겠습니까 ?</h1>
+            <c:if test="${empty LgoinType}">
+                <a href="<c:url value="/Edit/LeaveMember?email=${LoginInfo.email}"/> ">
+                    <button class="button">탈퇴하기</button>
+                </a>
+            </c:if>
+
+            <c:if test="${!empty LgoinType}">
+                <a href="<c:url value="/Edit/LeaveKakao"/> ">
+                    <button class="button">탈퇴하기</button>
+                </a>
+            </c:if>
+
+
+
+        </div>
+
+
     </section>
     <footer>
         <div class="DesFooter">

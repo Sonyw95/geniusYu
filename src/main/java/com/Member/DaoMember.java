@@ -22,7 +22,32 @@ public class DaoMember {
         List<MemberVo> list = jdbcTemplate.query("SELECT * FROM BLOG_MEMBER WHERE email=?", new MemberRowMap(), email);
         return list.isEmpty() ? null : list.get(0);
     }
+    public MemberVo SearchByNickname(String nickname) {
+        List<MemberVo> list = jdbcTemplate.query("SELECT * FROM BLOG_MEMBER WHERE NICKNAME=?", new MemberRowMap(), nickname);
+        return list.isEmpty() ? null : list.get(0);
+    }
 
+    public void memberUpdate(String oneline, String nickname) {
+        jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement pstm = connection.prepareStatement("UPDATE BLOG_MEMBER SET ONELINE =? where nickname = ?");
+                pstm.setString(1, oneline);
+                pstm.setString(2, nickname);
+                return pstm;
+            }
+        });
+    }
+    public void leaveMember(String email){
+        jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement pstm = connection.prepareStatement("DELETE from BLOG_MEMBER WHERE email = ?");
+                pstm.setString(1, email);
+                return pstm;
+            }
+        });
+    }
 
     public void MemberInsert(final MemberVo memberVo) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -30,10 +55,11 @@ public class DaoMember {
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement pstm = connection.prepareStatement(
-                        "insert into BLOG_MEMBER(password, email, nickname, Reg_Date) values (?,?,?,now())", new String[]{"BOARD_INDEX"});
+                        "insert into BLOG_MEMBER(password, email, nickname,ONELINE, Reg_Date) values (?,?,?,?,now())", new String[]{"BOARD_INDEX"});
                 pstm.setString(1, memberVo.getPassword());
                 pstm.setString(2, memberVo.getEmail());
                 pstm.setString(3, memberVo.getNickname());
+                pstm.setString(4, memberVo.getOneline());
                 return pstm;
             }
         }, keyHolder);

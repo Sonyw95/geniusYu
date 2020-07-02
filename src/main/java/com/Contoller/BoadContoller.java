@@ -1,10 +1,16 @@
 package com.Contoller;
 
 import com.Boad.*;
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.*;
 import java.util.List;
@@ -14,6 +20,7 @@ public class BoadContoller {
 
     // ControllerConfig에서 자동주입 받은 빈을 사용하기 위해서 선언합니다.
     private BoadDao boadDao;
+
     // 여기서 사용될 boadDao객체의 쿼리 접근하기 위해 생성합니다.
     //ControllerConfig에서 주입을 받습니다.
     public void setBoadController(BoadDao boadDao) {
@@ -75,39 +82,39 @@ public class BoadContoller {
             // 만약 커맨드 객체 안에서 설정된 Validator 애노테이션에 부합되는 에러가 발생시 !
             return "boad/BoadWrite";
         }
-       int boad_index =  boadDao.insert(boadWriteVo);
+        int boad_index = boadDao.insert(boadWriteVo);
         return "redirect:/BoadView?boad-index=" + boad_index;
 
     }
 
     @RequestMapping("/BoadView")
     public String getBoadview(@RequestParam(name = "boad-index") int boad_index, Model model) {
-        CommentVo commentVo= new CommentVo();
-        int index=0;
+        CommentVo commentVo = new CommentVo();
+        int index = 0;
         List<BoadListVo> list = boadDao.SearchByBoad(boad_index);
-        for(BoadListVo boadListVo : list){
-            index= boadListVo.getIndex();
+        for (BoadListVo boadListVo : list) {
+            index = boadListVo.getIndex();
         }
         List<CommentVo> comment = boadDao.commentList(index);
         model.addAttribute("list", list);
-        model.addAttribute("commentVo",commentVo);
-        model.addAttribute("commentList",comment);
+        model.addAttribute("commentVo", commentVo);
+        model.addAttribute("commentList", comment);
         return "boad/ViewBoad";
     }
 
     @RequestMapping("/boad/BoadView")
-    public String ViewBoad(@RequestParam(name = "boad-index") int boad_index,  Model model) throws UnsupportedEncodingException {
-        CommentVo commentVo= new CommentVo();
-        int index=0;
+    public String ViewBoad(@RequestParam(name = "boad-index") int boad_index, Model model) throws UnsupportedEncodingException {
+        CommentVo commentVo = new CommentVo();
+        int index = 0;
         List<BoadListVo> list = boadDao.SearchByBoad(boad_index);
 
-        for(BoadListVo boadListVo : list){
-           index= boadListVo.getIndex();
+        for (BoadListVo boadListVo : list) {
+            index = boadListVo.getIndex();
         }
         List<CommentVo> comment = boadDao.commentList(index);
         model.addAttribute("list", list);
-        model.addAttribute("commentVo",commentVo);
-        model.addAttribute("commentList",comment);
+        model.addAttribute("commentVo", commentVo);
+        model.addAttribute("commentList", comment);
         return "boad/ViewBoad";
     }
 
@@ -119,19 +126,11 @@ public class BoadContoller {
 
     }
 
-    @RequestMapping("/boad/EditBoad")
-    public String EditBoad(@Valid BoadWriteVo boadWriteVo, Errors errors) throws UnsupportedEncodingException {
-        if (errors.hasErrors()) {
-            return "boad/BoadWrite";
-        }
-        boadDao.Update(boadWriteVo);
-        return "redirect:/BoadView?title=" ;
 
-    }
     @RequestMapping("/boad/comment")
     public String commentUpload(@Valid CommentVo commentVo, Errors errors) throws UnsupportedEncodingException {
 
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             return "redirect:/BoadView?boad-index=" + commentVo.getBoard_index();
         }
 
@@ -140,32 +139,44 @@ public class BoadContoller {
 
     }
 
+    /**
+     * ck에디터 파일업로드 이벤트 발생 시 처리
+     *
+     * @param model
+     * @param upload
+     * @return
+     */
     // 이미지 업로드 처리 오류가 계속나서 비활성
-//    @RequestMapping(value = "boad/writeImage",  consumes = "multipart/form-data" )
-//    public String uploadImage(HttpServletRequest req, HttpServletResponse res, @RequestBody @RequestParam MultipartFile upload) throws Exception {
-//        JsonObject jsonObject = new JsonObject();
-//        PrintWriter printWriter = null;
-//        String fileName = upload.getOriginalFilename();
-//        res.setCharacterEncoding("utf-8");
-//        // 파일 이름을 바이트로 변환.
-//        byte[] bytes = fileName.getBytes();
-//
-//        String uploadPath = "com/UploadImage/";
-//
-//        OutputStream out = new FileOutputStream(new File(uploadPath + fileName));
-//        out.write(bytes);
-//
-//        printWriter = res.getWriter();
-//        res.setContentType("text/html");
-//
-//        String fileUrl = req.getContextPath() + "/UploadImage/" + fileName;
-//        jsonObject.addProperty("upload", 1);
-//        jsonObject.addProperty("fileName", fileName);
-//        jsonObject.addProperty("url",fileUrl);
-//
-//        printWriter.println(jsonObject);
-//
-//        return null;
-//    }
+    @ResponseBody
+    @RequestMapping(value = "boad/writeImage")
+    public String uploadImage(Model model,
+                              MultipartHttpServletRequest upload, HttpServletRequest req, HttpServletResponse rep) throws Exception {
+        JsonObject jsonObject = new JsonObject();
+        MultipartFile file = upload.getFile("upload");
+        String fileName = file.getOriginalFilename();
+        PrintWriter printWriter = null;
+        // 파일 이름을 바이트로 변환.
+        byte[] bytes = file.getBytes();
+
+        String uploadPath = req.getSession().getServletContext().getRealPath("/") + "/UploadImage/";
+//        String uploadPath ="/Users/user/IdeaProjects/geniusYu/web/UploadImage/";
+        OutputStream out = new FileOutputStream(new File(uploadPath + fileName));
+        out.write(bytes);
+
+
+        printWriter= rep.getWriter();
+        rep.setContentType("text/html");
+
+        String fileUrl = "http://urlol.kr/UploadImage/" + fileName;
+        jsonObject.addProperty("filename", fileName);
+        jsonObject.addProperty("uploaded", 1);
+        jsonObject.addProperty("url", fileUrl);
+        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject);
+
+        printWriter.println(jsonObject);
+
+        return null;
+    }
 }
 

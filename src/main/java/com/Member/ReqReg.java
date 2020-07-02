@@ -14,9 +14,20 @@ public class ReqReg {
     @Size(min = 6, message = "패스워드는 촤소 6자 이상 이어야 합니다")
     private String password;
     @NotEmpty(message = "필수로 채워야 합니다.")
-    private String  confirmPassword;
+    private String confirmPassword;
     @NotEmpty(message = "필수로 채워야 합니다.")
     private String nickname;
+
+    @NotEmpty(message = "필수로 채워야 합니다.")
+    private String oneline;
+
+    public String getOneline() {
+        return oneline;
+    }
+
+    public void setOneline(String oneline) {
+        this.oneline = oneline;
+    }
 
     public String getNickname() {
         return nickname;
@@ -50,7 +61,9 @@ public class ReqReg {
         this.confirmPassword = confirmPassword;
     }
 
-    public boolean isPasswordEqualToConfirmPassWord(){
+    public boolean isPasswordEqualToConfirmPassWord() {
         return password.equals(confirmPassword);
     }
+
+
 }

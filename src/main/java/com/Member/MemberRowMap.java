@@ -11,7 +11,8 @@ public class MemberRowMap implements RowMapper<MemberVo> {
         MemberVo memberVo= new MemberVo(
                 resultSet.getString("password"),
                 resultSet.getString("nickname"),
-                resultSet.getString("Email"));
+                resultSet.getString("Email"),
+                resultSet.getString("oneline"));
         memberVo.setLocalDateTime(  resultSet.getTimestamp("Reg_Date").toLocalDateTime());
         return memberVo;
     }

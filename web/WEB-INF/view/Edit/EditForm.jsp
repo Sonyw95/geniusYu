@@ -11,8 +11,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ur Join us?</title>
-    <link rel="stylesheet" href="<c:url value="/css/LoginJoin.css"/> "/>
+    <meta name="description" content="개발자 손영욱의 일기장 입니다.">
+    <title>Yu urlol Blog</title>
+    <link rel="stylesheet" href="<c:url value='/css/EditForm.css' />">
 </head>
 <body>
 <div id="wrap">
@@ -20,6 +21,7 @@
         <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
+            <%-- 로그인에 관련된 상단--%>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
             <label class="navicon" for="nav-toggle"><span class="navicon-bar"></span></label>
             <ul class="nav-items">
@@ -30,10 +32,10 @@
                 </c:if>
                 <%--로   그인정보가 있을 때.--%>
                 <c:if test="${!empty LoginInfo}">
-                    <%-- 로그인된 계정 이름을 표시.--%>
-                    <li><a href="#">${LoginInfo.nickname}</a></li>
                     <%-- 일반적인 로그인 이라믄--%>
                     <c:if test="${empty LgoinType}">
+                        <%-- 로그인된 계정 이름을 표시.--%>
+                        <li><a href="<c:url value="/editInfo"/> ">${LoginInfo.nickname}</a></li>
                         <li><a href="<c:url value="/Login/logout"/>">로그아웃</a></li>
                     </c:if>
                     <%-- 근데 해당 로그인이 카카오 로그인이라면--%>
@@ -46,35 +48,55 @@
             </ul>
         </nav>
     </header>
-    <section>
-        <div class="Login-container">
-            <div>
-                <p><strong>Log In</strong><br>BLOG YU PROJECT</p>
-                <%--@elvariable id="ReqReg" type=""--%>
-                <form:form action="../join/insertJoin" method="post" modelAttribute="reqReg">
-                    <form:input cssClass="Login-InputForm" path="email" placeholder="이메일"/>
-                    <form:errors path="email"/>
-                    <form:input cssClass="Login-InputForm" path="nickname" placeholder="별명(블로그에 보여지는 이름)"/>
-                    <form:errors path="nickname"/>
-                    <form:password cssClass="Login-InputForm" path="password" placeholder="패스워드"/>
-                    <form:errors path="password"/>
-                    <form:password cssClass="Login-InputForm" path="confirmPassword" placeholder="패스워드 확인"/>
-                    <form:errors path="confirmPassword"/>
-                    <form:input cssClass="Login-InputForm" cssStyle="font-size: 10px;" path="oneline" placeholder="한줄소개"/>
-                    <form:errors path="oneline"/>
 
-                    <input class="Login-InputForm" style="background-color:white; color:black; font-size:20px;"
-                           type="submit" value="가입"/>
-                </form:form>
-                <a href="#"
-                   onclick='window.open("https://kauth.kakao.com/oauth/authorize?client_id=a594da28e89a08c2ee147c00b3c0db6c&redirect_uri=http://urlol.kr/Login/kakao&response_type=code","_blank","height=800,width=800, status=yes,toolbar=no,menubar=no,location=no,window.close()");return false'><input
-                        class="Login-InputForm" type="image" src="<c:url value="/img/KakaoBTN.png"/> " alt=""></a>
-            </div>
+    <%--Nav 바로 밑 게시판 탭에 관련된 아티클--%>
+    <article>
+        <nav class="Inside_Check">
+            <ul class="Inside_list">
+                <li class="active"><a href="<c:url value="/Edit/EditForm"/> ">정보변경</a></li>
+                <li><a href="<c:url value="/Edit/LeaveMember"/> ">회원탈퇴</a></li>
+            </ul>
+        </nav>
+    </article>
+    <section>
+
+        <div class="sect_container">
+
+            <form:form action="${pageContext.request.contextPath}/Edit/EditSuccess" method="post" modelAttribute="editReq">
+
+                <div> <h4>비밀번호를 입력하여야 변경이 가능합니다.</h4></div>
+
+                <form:hidden path="email" value="${LoginInfo.email}"/>
+                <form:hidden path="nickname" value="${LoginInfo.nickname}"/>
+
+                <div><img src="<c:url value="/img/no-image.jpg"/> " alt=""></div>
+
+                <div><form:input cssStyle="width: 30%;" path="oneline"/></div>
+
+                <div>${LoginInfo.nickname}</div>
+
+                <div>${LoginInfo.email}</div>
+
+                <form:errors path="password"/>
+                <div><form:password path="password" placeholder="비밀번호 입력"/>
+                </div>
+
+                <form:errors path="confirmPassword"/>
+                <div><form:password path="confirmPassword" placeholder="비밀번호 확인"/>
+                </div>
+
+                <input class="button" type="submit" value="확인">
+
+            </form:form>
+
         </div>
 
     </section>
+    <footer>
+        <div class="DesFooter">
+            Copyright 2020 © YoungU..
+        </div>
+    </footer>
 </div>
 </body>
-<script>
-</script>
 </html>

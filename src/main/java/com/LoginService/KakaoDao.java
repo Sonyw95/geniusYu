@@ -93,6 +93,22 @@ public class KakaoDao {
         return kakaoVO;
     }
 
+    public void LinkOut(KakaoVO kakaoVO){
+        String RequestUrl ="https://kapi.kakao.com/v1/user/unlink";
+
+        try {
+            URL url = new URL(RequestUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestProperty("Authorization", "bearer " + kakaoVO.getToken());
+            connection.setRequestMethod("POST");
+            BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void KakaoLogOut(KakaoVO kakaoVO){
         String RequestUrl ="https://kauth.kakao.com/oauth/logout?client_id=db3025daa10357d71f35ce5b1d9b9a6e&logout_redirect_uri=http://urlol.kr/Logout/KakaLogout";
         try {

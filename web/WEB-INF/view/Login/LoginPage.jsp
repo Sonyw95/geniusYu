@@ -17,7 +17,7 @@
 <body>
 <div id="wrap">
     <header>
-        <a class="logo" href="<c:url value="/main/FirstVisited"/> "><img
+        <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">
@@ -48,7 +48,7 @@
         <div class="Login-container">
             <div>
                 <p><strong>Log In</strong><br>BLOG YU PROJECT</p>
-                <form:form action="../Login/LoginSubmit" modelAttribute="loginVo">
+                <form:form action="${pageContext.request.contextPath}/Login/LoginSubmit" modelAttribute="loginVo">
                     <form:input path="email" cssClass="Login-InputForm" placeholder="이메일"/>
                     <form:errors path="email"/>
                     <form:password path="password" cssClass="Login-InputForm" placeholder="패스워드"/>

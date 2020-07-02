@@ -42,18 +42,11 @@ public class JoinController {
         }
         try {
             memberReg.reist(reqReg);
-            return "main/FirstVisited";
+            return "redirect:/LoginPage";
 
         } catch (DuplicateEmailException e) {
             errors.rejectValue("email","duplicate");
             return "join/JoinUs";
         }
     }
-    @RequestMapping("/main/Notice")
-    public String Notice(){
-        return "main/Notice";
-    }
-
-
-
 }

@@ -16,7 +16,7 @@
 <body>
 <div id="wrap">
     <header>
-        <a class="logo" href="<c:url value='/main/FirstVisited'/> "><img
+        <a class="logo" href="<c:url value="/boad/list"/> "><img
                 src="<c:url value='/img/logo_transparent.png'/>"></a>
         <nav>
             <input class="nav-toggle" id="nav-toggle" type="checkbox">

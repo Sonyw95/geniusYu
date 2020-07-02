@@ -14,7 +14,7 @@ public class MemberReg {
         if(memberVo != null){
             throw new DuplicateEmailException();
         }
-            MemberVo newMember = new MemberVo(reqReg.getPassword(), reqReg.getNickname(), reqReg.getEmail());
+            MemberVo newMember = new MemberVo(reqReg.getPassword(), reqReg.getNickname(), reqReg.getEmail(),reqReg.getOneline());
             daoMember.MemberInsert(newMember);
             return newMember.getNickname();
     }
